@@ -7,44 +7,46 @@
   <style>
     body {
       margin: 0;
-      background: #f5f5f5;
+      background: #fff;
       font-family: Arial, sans-serif;
+      overflow: hidden; /* piilottaa skrollit jos ei tarvetta */
     }
     h1 {
       text-align: center;
-      font-size: 1.5em;
-      margin: 20px 0;
-      color: #333;
+      font-size: 2em;
+      margin: 10px 0;
+      color: #222;
     }
     .calendar-container {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       gap: 20px;
-      padding: 20px;
+      padding: 10px;
     }
     .calendar-box {
       background: #fff;
-      border: 1px solid #00AAA9;
-      border-radius: 10px;
+      border: 2px solid #00AAA9;
+      border-radius: 12px;
       padding: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 95%;
+      max-width: 1300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       text-align: center;
-      max-width: 250px;
-      flex: 1 1 250px;
     }
     .calendar-box h2 {
-      font-size: 1.1em;
-      margin: 5px 0;
+      font-size: 1.5em;
+      margin: 10px 0;
+      color: #333;
     }
     iframe {
       width: 100%;
-      height: 250px;
+      height: 600px; /* optimaalinen 1366x768 näytölle */
       border: none;
     }
     .footer-link {
-      margin-top: 10px;
-      font-size: 14px;
+      margin-top: 8px;
+      font-size: 16px;
     }
     .footer-link a {
       color: #ff8114;
@@ -63,7 +65,7 @@
     <!-- Metsäkylän VPK -->
     <div class="calendar-box">
       <h2><a href="https://metsakylanvpk.nimenhuuto.com/" target="_blank">Metsäkylän VPK</a></h2>
-      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=200&width=226" scrolling="auto"></iframe>
+      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=600&width=1200" scrolling="auto"></iframe>
       <div class="footer-link">
         <a href="https://nimenhuuto.com/" target="_blank">Nimenhuuto.com</a>
       </div>
@@ -72,7 +74,7 @@
     <!-- Metsäkylän VPK Nuoriso-osasto -->
     <div class="calendar-box">
       <h2><a href="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/" target="_blank">Metsäkylän VPK Nuoriso-osasto</a></h2>
-      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=200&width=226" scrolling="auto"></iframe>
+      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=600&width=1200" scrolling="auto"></iframe>
       <div class="footer-link">
         <a href="https://nimenhuuto.com/" target="_blank">Nimenhuuto.com</a>
       </div>
