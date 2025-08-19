@@ -9,17 +9,19 @@
       margin: 0;
       background: linear-gradient(135deg, #f9f9f9, #e9eef3);
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 10px;
     }
 
     .container {
       display: flex;
+      flex-direction: row;
       width: 95%;
       max-width: 1366px;
-      height: 90%;
+      height: 90vh;
       gap: 20px;
     }
 
@@ -48,19 +50,47 @@
       width: 100%;
       border: none;
     }
+
+    /* RESPONSIIVISUUS */
+    @media (max-width: 1024px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+      .calendar-box {
+        height: 500px;
+      }
+      .header {
+        font-size: 1.6em;
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .calendar-box {
+        height: 400px;
+      }
+      .header {
+        font-size: 1.4em;
+        padding: 10px;
+      }
+    }
+
   </style>
 </head>
 <body>
 
   <div class="container">
+    <!-- Miehistö -->
     <div class="calendar-box">
       <div class="header">Miehistö</div>
-      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=650"></iframe>
+      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_monthly_calendar?css=&height=650" scrolling="auto"></iframe>
     </div>
 
+    <!-- Nuoriso-osasto -->
     <div class="calendar-box">
       <div class="header">Nuoriso-osasto</div>
-      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=650"></iframe>
+      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_monthly_calendar?css=&height=650" scrolling="auto"></iframe>
     </div>
   </div>
 
