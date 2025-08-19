@@ -7,65 +7,65 @@
   <style>
     body {
       margin: 0;
+      background: linear-gradient(135deg, #f9f9f9, #e9eef3);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      width: 95%;
+      max-width: 1366px;
+      height: 90%;
+      gap: 20px;
+    }
+
+    .calendar-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       background: #fff;
-      font-family: Arial, sans-serif;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       overflow: hidden;
     }
-    h1 {
+
+    .header {
+      background: #007b83;
+      color: #fff;
       text-align: center;
-      font-size: 2.5em;
-      margin: 10px 0;
-      color: #222;
+      font-size: 1.8em;
+      padding: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
-    .calendar-box {
-      width: 100%;
-      height: calc(100vh - 80px); /* otsikon jälkeen täysi korkeus */
-      display: none;
-    }
+
     iframe {
+      flex: 1;
       width: 100%;
-      height: 100%;
       border: none;
-    }
-    .active {
-      display: block;
     }
   </style>
 </head>
 <body>
 
-  <h1 id="title">Miehistö</h1>
+  <div class="container">
+    <div class="calendar-box">
+      <div class="header">Miehistö</div>
+      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=650"></iframe>
+    </div>
 
-  <div id="miehisto" class="calendar-box active">
-    <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=1300"></iframe>
-  </div>
-
-  <div id="nuoriso" class="calendar-box">
-    <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=1300"></iframe>
+    <div class="calendar-box">
+      <div class="header">Nuoriso-osasto</div>
+      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=650"></iframe>
+    </div>
   </div>
 
   <script>
-    const boxes = [
-      {id: "miehisto", title: "Miehistö"},
-      {id: "nuoriso", title: "Nuoriso-osasto"}
-    ];
-    let current = 0;
-
-    function switchCalendar() {
-      // piilota kaikki
-      boxes.forEach(b => document.getElementById(b.id).classList.remove("active"));
-      // vaihda otsikko
-      document.getElementById("title").innerText = boxes[current].title;
-      // näytä aktiivinen
-      document.getElementById(boxes[current].id).classList.add("active");
-      // siirry seuraavaan
-      current = (current + 1) % boxes.length;
-    }
-
-    // vaihto 30 sek välein
-    setInterval(switchCalendar, 30000);
-
-    // automaattinen sivun päivitys 15 min välein
+    // Automaattinen päivitys 15 minuutin välein
     setTimeout(() => location.reload(), 15 * 60 * 1000);
   </script>
 
