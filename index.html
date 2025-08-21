@@ -2,100 +2,107 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <title>Aulan kalenterit</title>
+  <title>Aulan tapahtumakalenterit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
-      background: linear-gradient(135deg, #f9f9f9, #e9eef3);
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      min-height: 100vh;
+      background: #f5f5f5;
+      background: #fff;
+      font-family: Arial, sans-serif;
+      overflow: hidden; /* piilottaa skrollit jos ei tarvetta */
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5em;
+      margin: 20px 0;
+      color: #333;
+      font-size: 2em;
+      margin: 10px 0;
+      color: #222;
+    }
+    .calendar-container {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
+      flex-direction: column;
       align-items: center;
+      gap: 20px;
+      padding: 20px;
       padding: 10px;
     }
-
-    .container {
-      display: flex;
-      flex-direction: row;
-      width: 95%;
-      max-width: 1366px;
-      height: 90vh;
-      gap: 20px;
-    }
-
     .calendar-box {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      overflow: hidden;
-    }
-
-    .header {
-      background: #007b83;
-      color: #fff;
+      border: 1px solid #00AAA9;
+      border-radius: 10px;
+      border: 2px solid #00AAA9;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 95%;
+      max-width: 1300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       text-align: center;
-      font-size: 1.8em;
-      padding: 14px;
-      font-weight: 600;
-      letter-spacing: 1px;
+      max-width: 250px;
+      flex: 1 1 250px;
     }
-
+    .calendar-box h2 {
+      font-size: 1.1em;
+      margin: 5px 0;
+      font-size: 1.5em;
+      margin: 10px 0;
+      color: #333;
+    }
     iframe {
-      flex: 1;
       width: 100%;
+      height: 250px;
+      height: 600px; /* optimaalinen 1366x768 näytölle */
       border: none;
     }
-
-    /* RESPONSIIVISUUS */
-    @media (max-width: 1024px) {
-      .container {
-        flex-direction: column;
-        height: auto;
-      }
-      .calendar-box {
-        height: 500px;
-      }
-      .header {
-        font-size: 1.6em;
-        padding: 12px;
-      }
+    .footer-link {
+      margin-top: 10px;
+      font-size: 14px;
+      margin-top: 8px;
+      font-size: 16px;
     }
-
-    @media (max-width: 600px) {
-      .calendar-box {
-        height: 400px;
-      }
-      .header {
-        font-size: 1.4em;
-        padding: 10px;
-      }
+    .footer-link a {
+      color: #ff8114;
+      font-weight: bold;
+      font-style: italic;
+      text-decoration: none;
     }
-
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- Miehistö: KUUKAUSIKALENTERI -->
+  <h1>Aulan tapahtumakalenterit</h1>
+
+  <div class="calendar-container">
+
+    <!-- Metsäkylän VPK -->
     <div class="calendar-box">
-      <div class="header">Miehistö</div>
-      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_monthly_calendar?css=&height=750" scrolling="auto"></iframe>
+      <h2><a href="https://metsakylanvpk.nimenhuuto.com/" target="_blank">Metsäkylän VPK</a></h2>
+      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=200&width=226" scrolling="auto"></iframe>
+      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=600&width=1200" scrolling="auto"></iframe>
+      <div class="footer-link">
+        <a href="https://nimenhuuto.com/" target="_blank">Nimenhuuto.com</a>
+      </div>
     </div>
 
-    <!-- Nuoriso-osasto: TAPAHTUMALISTA -->
+    <!-- Metsäkylän VPK Nuoriso-osasto -->
     <div class="calendar-box">
-      <div class="header">Nuoriso-osasto</div>
-      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=650&width=650" scrolling="auto"></iframe>
+      <h2><a href="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/" target="_blank">Metsäkylän VPK Nuoriso-osasto</a></h2>
+      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=200&width=226" scrolling="auto"></iframe>
+      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=600&width=1200" scrolling="auto"></iframe>
+      <div class="footer-link">
+        <a href="https://nimenhuuto.com/" target="_blank">Nimenhuuto.com</a>
+      </div>
     </div>
+
   </div>
 
+  <!-- Automaattinen päivitys 15 minuutin välein -->
   <script>
-    // Automaattinen päivitys 15 minuutin välein
     setTimeout(() => location.reload(), 15 * 60 * 1000);
   </script>
 
