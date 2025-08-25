@@ -2,64 +2,63 @@
 <html lang="fi">
 <head>
   <meta charset="UTF-8">
-  <title>Aulan tapahtumakalenterit</title>
   <title>Aulan kalenterit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
+      background: linear-gradient(135deg, #f9f9f9, #e9eef3);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      width: 95%;
+      max-width: 1366px;
+      height: 90%;
+      gap: 20px;
+    }
+
+    .calendar-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       background: #fff;
       font-family: Arial, sans-serif;
-      overflow: hidden; /* piilottaa skrollit jos ei tarvetta */
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       overflow: hidden;
     }
     h1 {
+
+    .header {
+      background: #007b83;
+      color: #fff;
       text-align: center;
-      font-size: 2em;
       font-size: 2.5em;
       margin: 10px 0;
       color: #222;
     }
-    .calendar-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      padding: 10px;
-    }
     .calendar-box {
-      background: #fff;
-      border: 2px solid #00AAA9;
-      border-radius: 12px;
-      padding: 10px;
-      width: 95%;
-      max-width: 1300px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      text-align: center;
-    }
-    .calendar-box h2 {
-      font-size: 1.5em;
-      margin: 10px 0;
-      color: #333;
       width: 100%;
       height: calc(100vh - 80px); /* otsikon jälkeen täysi korkeus */
       display: none;
+      font-size: 1.8em;
+      padding: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
+
     iframe {
+      flex: 1;
       width: 100%;
-      height: 600px; /* optimaalinen 1366x768 näytölle */
       height: 100%;
       border: none;
     }
-    .footer-link {
-      margin-top: 8px;
-      font-size: 16px;
-    }
-    .footer-link a {
-      color: #ff8114;
-      font-weight: bold;
-      font-style: italic;
-      text-decoration: none;
     .active {
       display: block;
     }
@@ -67,37 +66,25 @@
 </head>
 <body>
 
-  <h1>Aulan tapahtumakalenterit</h1>
   <h1 id="title">Miehistö</h1>
 
-  <div class="calendar-container">
-
-    <!-- Metsäkylän VPK -->
-    <div class="calendar-box">
-      <h2><a href="https://metsakylanvpk.nimenhuuto.com/" target="_blank">Metsäkylän VPK</a></h2>
-      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=600&width=1200" scrolling="auto"></iframe>
-      <div class="footer-link">
-        <a href="https://nimenhuuto.com/" target="_blank">Nimenhuuto.com</a>
-      </div>
-    </div>
-
-    <!-- Metsäkylän VPK Nuoriso-osasto -->
-    <div class="calendar-box">
-      <h2><a href="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/" target="_blank">Metsäkylän VPK Nuoriso-osasto</a></h2>
-      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=600&width=1200" scrolling="auto"></iframe>
-      <div class="footer-link">
-        <a href="https://nimenhuuto.com/" target="_blank">Nimenhuuto.com</a>
-      </div>
-    </div>
   <div id="miehisto" class="calendar-box active">
     <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=1300"></iframe>
   </div>
+  <div class="container">
+    <div class="calendar-box">
+      <div class="header">Miehistö</div>
+      <iframe src="https://metsakylanvpk.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=650"></iframe>
+    </div>
 
   <div id="nuoriso" class="calendar-box">
     <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=1300"></iframe>
+    <div class="calendar-box">
+      <div class="header">Nuoriso-osasto</div>
+      <iframe src="https://metsakylanvpknuoriso-osasto.nimenhuuto.com/calendar/widget_iframe_events?css=&height=700&width=650"></iframe>
+    </div>
   </div>
 
-  <!-- Automaattinen päivitys 15 minuutin välein -->
   <script>
     const boxes = [
       {id: "miehisto", title: "Miehistö"},
@@ -120,6 +107,7 @@
     setInterval(switchCalendar, 30000);
 
     // automaattinen sivun päivitys 15 min välein
+    // Automaattinen päivitys 15 minuutin välein
     setTimeout(() => location.reload(), 15 * 60 * 1000);
   </script>
 
